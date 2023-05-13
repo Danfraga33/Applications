@@ -3,6 +3,8 @@ const litres = document.querySelector("#litres")
 const percentage = document.querySelector("#percentage")
 const remained = document.querySelector("#remained")
 
+
+
 updateBigCup()
 
 smallCups.forEach((cup, idx) => {
@@ -26,6 +28,10 @@ function highlightCups (idx) {
 }
 
 function updateBigCup () {
+  const inputGoal = document.querySelector('#goal')
+  const goal = document.querySelector('.goalText')
+  const btn = document.querySelector('button')
+
   const fullCups = document.querySelectorAll('.cup-small.full').length
   const totalCups = smallCups.length
 
@@ -42,8 +48,12 @@ function updateBigCup () {
    remained.style.visibility = 'hidden'
     remained.style.height = 0
   } else {
+    btn.addEventListener('click', () => {
+      goal.innerText = `Goal: ${inputGoal.value} Litres`
+    })
     remained.style.visibility = 'visible'
-    litres.innerText = `${2 - (250*fullCups / 1000)}L`  
+    litres.innerText = `${inputGoal.value - ((fullCups / totalCups) * inputGoal.value) }L`
+    
 
   }
 }
