@@ -8,7 +8,7 @@ let load = 0;
 let int = setInterval(blurring, 20);
 
 function blurring() {
-  load++;
+  load++; 
   // if load is 100%, stop blurring
   if (load > 99) {
     clearInterval(int);
